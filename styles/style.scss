@@ -1,0 +1,294 @@
+.cta_sec{
+    padding: 0;
+    .cta_flex{
+        @include radius(43px);
+        padding: 6rem;
+        @include flex;
+        overflow: hidden;
+        gap: 2rem;
+        position: relative;
+        background-color: #2568AD;
+        border: 1px solid #DFF2F2;
+        margin-bottom: -10rem;
+        z-index: 1;
+        @include ipad_sm{
+            flex-direction: column;
+        }
+        @include mobile_sm{
+            padding: 3rem;
+        }
+        // &:before{
+        //     @include pos;
+        //     content: '';
+        //     background-image: url(/images/overlay.png);
+        //     @include bg;
+        //     opacity: 0.7;
+        // }
+        .sec_heading{
+            flex: .7;
+            margin-bottom: 0;
+            position: relative;
+            @include ipad_sm{
+                flex: 1;
+                text-align: center;
+            }
+            h2{
+                color: $light;
+                margin-bottom: 0;
+            }
+        }
+        .btn_blk{
+            align-self: center;
+            flex: .3;
+            @include ipad_sm{
+                flex: 1;
+                align-self: unset;
+                justify-content: center;
+            }
+            .site_btn{
+                min-width: 23rem;
+                
+            }
+        }
+    }
+}
+
+
+// ============banner=============
+
+.banner{
+    .cntnt{
+        max-width: 90rem;
+        text-align: center;
+        margin: 0 auto 4rem;
+        p{
+            max-width: 50rem;
+            margin: 2rem auto 3rem;
+        }
+    }
+    .image{
+        max-width: 100rem;
+        margin: 0 auto;
+        @include img(50%);
+        background-color: $primary-color;
+        @include radius(30px);
+        box-shadow: none;
+        img{
+            @include pos;
+            @include object(contain);
+        }
+    }
+}
+
+
+
+.feature_sec{
+    padding: 0;
+    .sec_heading{
+        max-width: 70rem;
+        margin-bottom: 3rem;
+    }
+    .flex{
+        margin: -1rem;
+        .col{
+            flex: unset;
+            width: calc(100% / 3);
+            padding: 1rem;
+            .inner{
+                @include radius(15px);
+                padding: 3rem;
+                background-color: $color;
+                height: 100%;
+                h4,p{
+                    color: $light;
+                }
+                .head_inner{
+                    @include flex;
+                    gap: 1.5rem;
+                    margin-bottom: 1.5rem;
+                    .img_icon{
+                        width: 8rem;
+                        height: 8rem;
+                        background-color: $light;
+                        @include radius(6px);
+                        overflow: hidden;
+                        padding: 1rem;
+                        img{
+                            @include object(contain);
+                        }
+                    }
+                    h4{
+                        margin-bottom: 0;
+                        align-self: center;
+                        flex: 1;
+                    }
+                }
+                p{
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+}
+
+.sponserd_sec{
+    .sec_heading{
+        margin-bottom: 5rem;
+    }
+    .flex{
+        margin: -1rem;
+        gap: 2rem;
+        justify-content: center;
+        .image{
+            width: 14rem;
+            height: 6rem;
+            overflow: hidden;
+            img{
+                @include object(contain);
+            }
+        }
+    }
+}
+
+.why_choose_sec{
+    padding: 0;
+    .flex{
+        .colL{
+            width: 55%;
+            padding-right: 2rem;
+            .inner{
+                background-color: #CEDDE6;
+                @include radius(30px);
+                padding: 5rem;
+                .lst{
+                    .inner_lst{
+                        @include flex;
+                        gap: 2rem;
+                        max-width: 45rem;
+                        .img_icon{
+                            width: 8rem;
+                            height: 8rem;
+                            background-color: #4472C9;
+                            @include radius(50px);
+                            overflow: hidden;
+                            padding: 1.5rem;
+                            position: relative;
+                            align-self: center;
+                            img{
+                                @include object(contain);
+                            }
+                        }
+                        .cntnt{
+                            flex: 1;
+                            background: #fff;
+                            padding: 1.5rem;
+                            border-radius: 7px;
+                            padding-left: 6rem;
+                            margin-left: -6rem;
+                            height: 13.3rem;
+                            @include flex($flow:column,$justify:center);
+                            h4{
+                                margin-bottom: .5rem;
+                            }
+                            p{
+                                margin-bottom: 0;
+                            }
+                        }
+                        &:nth-child(2){
+                            margin-left: auto;
+                        }
+                        &:first-child{
+                            .img_icon{
+                                background-color: #8BE7C8;
+                            }
+                        }
+                        &:last-child{
+                            .img_icon{
+                                background-color: #CE7AF0;
+                            }
+                        }
+                        &:not(:last-child){
+                            margin-bottom:2.5rem;
+                        }
+                    }
+                    
+                }
+            }
+        }
+        .colR{
+            width: 45%;
+            padding-left: 3rem;
+            align-self: center;
+            .sec_heading{
+                margin-bottom: 2rem;
+            }
+            .btn_blk{
+                margin-top: 2rem;
+            }
+        }
+    }
+}
+
+
+// ================product_sec=========
+.product_sec{
+    .cntnt{
+        max-width: 65rem;
+        margin: 0 auto 3rem;
+    }
+    .flex{
+        margin: -1rem;
+        .col{
+            padding: 1rem;
+            .inner{
+                @include radius(20px);
+                padding: 5rem;
+                background-color: #91B3F3;
+                a{
+                    @include flex;
+                    gap: .5rem;
+                    color: $color;
+                    font-family: 'SemiBold';
+                    img{
+                        height: 2rem;
+                        align-self: center;
+                        width: 2rem;
+                    }
+                }
+                p{
+                    color: #000;
+                }
+                .image{
+                    margin-top: 2rem;
+                    @include img(55%);
+                    box-shadow: none;
+                    background-color: transparent;
+                    img{
+                        @include object(contain);
+                        @include pos;
+                    }
+                }
+                
+            }
+            &:first-child{
+                .image{
+                    img{
+                        object-fit: cover;
+                    }
+                }
+            }
+            &:last-child{
+                .inner{
+                    background-color: $color;
+                    color: $light;
+                    a{
+                        color: #8BE7C8;
+                    }
+                    h4 , p{
+                        color: $light;
+                    }
+                }
+            }
+        }
+    }
+}
