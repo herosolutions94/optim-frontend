@@ -884,3 +884,231 @@
         }
     }
 }
+
+
+// ==========================contact us==============
+.contact_pg{
+    .cntnt{
+        margin-bottom: 3rem;
+    }
+    .flex{
+        .colL{
+            width: 60%;
+            padding-right: 3rem;
+            form{
+                background-color: #91B3F3;
+                @include radius(20px);
+                border: 1px solid #CEDDE6;
+                padding: 3rem;
+                .btn_blk{
+                    margin-top: 4rem;
+                    .site_btn{
+                        min-width: 15rem;
+                    }
+                }
+            }
+        }
+        .colR{
+            width: 30%;
+            align-self: center;
+            h4{
+                margin-bottom: 2rem;
+            }
+            ul{
+                @include list;
+                li{
+                    margin-bottom: 2rem;
+                    a , p{
+                        @include flex;
+                        gap: 1rem;
+                        img{
+                            width: 2rem;
+                            height: 2rem;
+                        }
+                        span{
+                            flex: 1;
+                            font-family: "MediumMedium";
+                        }
+                    }
+                }
+            }
+
+            .social_logon{
+                margin-top: 4rem;
+            }
+        }
+    }
+}
+// ===========================product page===========
+
+.product_one_banner{
+    .flex{
+        background-color: #91B3F3;
+        padding:9rem 6rem;
+        @include radius(25px);
+        .colL{
+            width: 45%;
+            padding-right: 2rem;
+            align-self: center;
+            p{
+                margin-bottom: 0;
+            }
+        }
+        .colR{
+            width: 55%;
+            padding-left: 2rem;
+            .image{
+                @include img(60%);
+                background-color: transparent;
+                @include radius(0);
+                box-shadow: none;
+                img{
+                    @include pos;
+                    @include object(contain);
+                }
+            }
+        }
+    }
+}
+
+
+.feature_product{
+    padding: 0;
+    .cntnt{
+        max-width: 70rem;
+        margin: 0 auto 3rem;
+        text-align: center;
+    }
+    .flex{
+        margin: -1rem;
+        .col{
+            width: 50%;
+            flex: unset;
+            padding: 1rem;
+            .inner{
+                padding: 3rem;
+                @include radius(20px);
+                .heading_feature{
+                    @include flex;
+                    gap: 1.5rem;
+                    margin-bottom: 1rem;
+                    .img_icon{
+                        width: 7rem;
+                        height: 7rem;
+                        padding: .8rem;
+                        overflow: hidden;
+                        @include radius(.5rem);
+                        img{
+                            @include object(contain);
+                        }
+                    }
+                    h4{
+                        margin-bottom: 0;
+                        flex:1;
+                        align-self: center;
+                    }
+                }
+                p{
+                    margin-bottom: 0;
+                }
+            }
+            &:nth-child(1){
+                .inner{
+                    background-color: #09369C;
+                    .heading_feature{
+                        .img_icon{
+                            background: #1242B1;
+                        }
+                    }
+                    h4,p{
+                        color: $light;
+                    }
+                }
+            }
+
+            &:nth-child(2){
+                .inner{
+                    background-color: #8BE7C8;
+                    .heading_feature{
+                        .img_icon{
+                            background: #9EF3D6;
+                        }
+                    }
+                }
+            }
+
+            &:nth-child(3){
+                .inner{
+                    background-color: #4472C9;
+                    .heading_feature{
+                        .img_icon{
+                            background: #5289F1;
+                        }
+                    }
+                    h4,p{
+                        color: $light;
+                    }
+                }
+            }
+
+            &:nth-child(4){
+                .inner{
+                    background-color: #CEDDE6;
+                    .heading_feature{
+                        .img_icon{
+                            background: #DFF0FA;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.benefits_sec{
+    .flex{
+        @include radius(30px);
+        border: 1px solid #D1EAF5;
+        background-color: #F1FAFF;
+        padding: 6rem;
+        .colL{
+            width: 50%;
+            padding-right: 2rem;
+            .image{
+                @include img(70%);
+                box-shadow: none;
+                background-color: transparent;
+                @include radius(0);
+                img{
+                    @include pos;
+                    @include object(contain);
+                }
+            }
+        }
+        .colR{
+            width: 50%;
+            padding-left: 2rem;
+            align-self: center;
+            ul{
+                @include list;
+                margin-top: 1.5rem;
+                li{
+                    position: relative;
+                    padding-left: 3rem;
+                    margin-bottom: 1rem;
+                    &:before{
+                        @include pos($r:null,$t:.1rem);
+                        content: '';
+                        background: url(/images/CheckCircle.svg);
+                        @include bg(contain);
+                        width: 2rem;
+                        height: 2rem;
+                    }
+                }
+            }
+            .btn_blk{
+                margin-top: 2rem;
+            }
+        }
+    }
+}

@@ -312,6 +312,7 @@ _btn {
         text-transform: capitalize;
         border: 1.5px solid $color;
         @include radius(50px);
+        font-family: "MediumMedium";
         outline: none !important;
         //-webkit-box-shadow: $shadow;
         //box-shadow: $shadow;

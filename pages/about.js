@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Cta from "@/components/cta";
 
-export default function Pricing() {
+export default function About() {
   return (
     <>
     <main>
