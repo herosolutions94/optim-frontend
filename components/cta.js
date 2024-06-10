@@ -3,10 +3,11 @@ export default function Cta() {
     return (
       <div className='cta_flex'>
         <div className='sec_heading'>
-            <h2>Transform Your MedTech and Pharma Operations with AI-Powered Insights</h2>
+            <h2>Ready to Optimize Your Fuel Retail Operation?</h2>
+            <p>Sign up today and start leveraging our AI-driven solutions to boost your gas station's profitability.</p>
         </div>
         <div className='btn_blk text-right'>
-            <Link href="/contact" className='site_btn dim'>Schedule Demo</Link>
+            <Link href="/signup" className='site_btn dim'>Sign Up Now</Link>
         </div>
       </div>
     );

@@ -51,7 +51,7 @@ body{
     @at-root{
         section {
         position: relative;
-        padding: 11rem 0;
+        padding: 9rem 0;
         @include ipad{
           padding: 7rem 0;
         }
@@ -1421,10 +1421,10 @@ column-gap: 1.5rem;
     display: block;
     width: 100%;
     height: 4.8rem;
-    background: $light;
+    background: #F1FAFF;
     text-align: left;
     padding: 0.6rem 1.4rem;
-    border: 1.5px solid rgba($color, 0.1);
+    border: 1.5px solid #91B3F3;
     @include radius(9px);
     outline: none !important;
     @include trans;
@@ -2158,8 +2158,12 @@ column-gap: 1.5rem;
       li {
         button {
           height: 0.4rem;
-          background: $dark_gray;
+          padding: 0;
+          background: $primary-color;
           border-radius: 50rem;
+          &:before{
+            display: none;
+          }
         }
         &.slick-active {
           button {
@@ -3120,13 +3124,18 @@ nav {
 footer {
   position: relative;
   color: rgba($light , 0.8);
-  background: linear-gradient(45deg, $gray, $primary-color);
-  padding: 20rem 0 2rem;
+  background-color: $primary-color;
+  padding: 9rem 0 3rem;
   margin-top: auto;
   overflow: hidden;
-  font-size: 1.5rem;
-  @include ipad_sm{
-    padding-top: 17rem;
+  border-top:2px solid rgb(184 184 184 / 19%);
+  font-size: 1.4rem;
+  .mid_col{
+    @include flex(center , center);
+    align-self: flex-start;
+    @include ipad{
+      justify-content: flex-start;
+    }
   }
   .contain {
     z-index: 3;
@@ -3140,99 +3149,47 @@ footer {
       color: $color;
     }
   }
-  .col-xl-5{
-    padding-right:7rem;
-    @include ipad{
-      padding-right: 1.5rem;
-      width: 28%;
-    }
-    @include ipad_sm{
-      width: 70%;
-    }
-    @include mobile_md{
-      width: 100%;
-    }
-
-  }
-  .col-xl-2{
-    @include ipad{
-      width: 21%;
-    }
-    @include ipad_sm{
-      width: 30%;
-    }
-    @include mobile_md{
-      width: 50%;
-    }
-    @include mobile_sm{
-      width: 100%;
-    }
-  }
-  .col-lg{
-    @include ipad_sm{
-      width: calc(100% / 3);
-    }
-    @include mobile_md{
-      width: 50%;
-    }
-    @include mobile_sm{
-      width: 100%;
-    }
-  }
+  
   .main_row {
     -webkit-box-pack: justify;
     -ms-flex-pack: justify;
     justify-content: space-between;
-    @include ipad_sm{
-      justify-content: unset;
-    }
   }
-  .col-lg , .col-xl-2{
-    @include mobile_sm{
-      padding: .5rem 1.5rem;
-    }
-    .in_col{
-      @include mobile_sm{
-        background-color: rgba($primary-color , 0.6);
-       overflow: hidden;
-        @include radius(6px);
+  .contact_lst{
+    @include list;
+    li{
+      margin-bottom: 1rem;
+      a{
+        @include flex;
+        column-gap: .5rem;
+        img{
+          width: 2.5rem;
+          height: 2.5rem;
+        }
+        span{
+          flex: 1;
+        }
       }
     }
   }
   h4 {
     margin-bottom: 3rem;
-    font-family: 'Regular';
+    font-family: 'Bold';
     color: rgba($light , 0.8);
     position: relative;
-    font-size: 1.7rem;
-    @include mobile_sm{
-      margin-bottom: 0;
-      padding: 1.5rem;
-      &:after{
-       @include pos($r:2rem,$l:null,$t:null,$b:null);
-        content: "";
-          @include chev;
-          width: 1.5rem;
-          height: 1.5rem;
-          color: inherit;
-          margin-left: 0.6rem;
-          margin-top: 0.4rem;
-      }
+    font-size: 1.6rem;
+    &:before{
+      @include pos($t:null,$b:-.9rem);
+      content: '';
+      width: 5rem;
+      height: .4rem;
+      background-color: #8BE7C8;
     }
   }
   .list {
     @include list;
     @include flex($flow: wrap);
     margin: -0.6rem 0;
-    @include mobile_sm{
-      margin: 0;
-      border-top: 1px solid rgb(125 145 177 / 24%);
-      padding: 1.5rem;
-      display: none;
-      &.active{
-        display: block;
-      }
-    }
     > li {
       display: block;
       width: 100%;
@@ -3282,10 +3239,10 @@ footer {
       @include radius(5px);
       overflow: hidden;
       .input {
-        height: 4.8rem;
+        height: 5.8rem;
         background: $light;
         border: 1px solid rgba(255, 255, 255, 0.02);
-        @include radius(5px);
+        @include radius(50px);
         color: $primary-color;
         padding-right: 6rem;
         &::placeholder{
@@ -3293,12 +3250,9 @@ footer {
         }
       }
       button {
-        @include pos;
+        @include pos($r:.5rem);
         left: initial;
-        width: 4.8rem;
-        height: 4.8rem;
-        background: $color;
-        padding: 0.6rem;
+        height: 4.6rem;
         margin: auto;
         border: 0;
         &:hover {
@@ -3332,8 +3286,9 @@ footer {
   }
   .copyright {
     @include flex(center, center);
-    margin-top: 5rem;
-    padding-top: 2rem;
+    margin-top: 9rem;
+    padding-top: 3rem;
+    border-top:2px solid rgb(184 184 184 / 19%);
     @include ipad_sm {
       -webkit-box-orient: vertical;
       -webkit-box-direction: normal;
@@ -3351,7 +3306,7 @@ footer {
 .social_logon {
   @include flex($flow: wrap);
   @include list;
-  gap: .7rem;
+  gap: .5rem;
   margin-top: 2rem;
   p{
     align-self: center;
@@ -3370,10 +3325,10 @@ footer {
     }
   }
   footer & {
-    gap: .7rem;
+    gap: .5rem;
     a{
-      width: 2rem;
-      height: 2rem;
+      width: 3rem;
+      height: 3rem;
       overflow: hidden;
       align-self: center;
       img{

@@ -1,9 +1,61 @@
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import BigCta from "@/components/big-cta";
+import Testimonials from "@/components/testimonials";
 
 export default function Home() {
-  
+  const data = [
+    {
+      id: 1,
+      image: "/images/quote.svg",
+      comment:
+        "People now recognise that having a good performance conversation means that something happens as a result. With Landingfolio, the design team can now build design which identifies employees’ career aspirations and goals and from which we approach managers and check to see what is happening.",
+      name: "Vicki and Stacy Oliver",
+      designation: "Founders of V&S Enterprises",
+    },
+    {
+      id: 2,
+      image: "/images/quote.svg",
+      comment:
+        "People now recognise that having a good performance conversation means that something happens as a result. With Landingfolio, the design team can now build design which identifies employees’ career aspirations and goals and from which we approach managers and check to see what is happening.",
+      name: "Albert Flores",
+      designation: "Product Manager at Jomanar",
+    },
+    {
+      id: 3,
+      image: "/images/quote.svg",
+      comment:
+        "People now recognise that having a good performance conversation means that something happens as a result. With Landingfolio, the design team can now build design which identifies employees’ career aspirations and goals and from which we approach managers and check to see what is happening.",
+      name: "Vicki and Stacy Oliver",
+      designation: "Founders of V&S Enterprises",
+    },
+    {
+      id: 4,
+      image: "/images/quote.svg",
+      comment:
+        "People now recognise that having a good performance conversation means that something happens as a result. With Landingfolio, the design team can now build design which identifies employees’ career aspirations and goals and from which we approach managers and check to see what is happening.",
+      name: "Albert Flores",
+      designation: "Product Manager at Jomanar",
+    },
+    {
+      id: 5,
+      image: "/images/quote.svg",
+      comment:
+        "People now recognise that having a good performance conversation means that something happens as a result. With Landingfolio, the design team can now build design which identifies employees’ career aspirations and goals and from which we approach managers and check to see what is happening.",
+      name: "Vicki and Stacy Oliver",
+      designation: "Founders of V&S Enterprises",
+    },
+    {
+      id: 6,
+      image: "/images/quote.svg",
+      comment:
+        "People now recognise that having a good performance conversation means that something happens as a result. With Landingfolio, the design team can now build design which identifies employees’ career aspirations and goals and from which we approach managers and check to see what is happening.",
+      name: "Albert Flores",
+      designation: "Product Manager at Jomanar",
+    },
+    
+  ];
   return (
     <>
     <main>
@@ -178,6 +230,18 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <BigCta />
+      <section className="testimonials">
+          <div className="contain">
+            <div className="sec_heading">
+              <h2>What Our Clients Say</h2>
+              <p>Our customers say Excellent</p>
+            </div>
+            <div className="slick-carousel">
+            <Testimonials data={data} />
+            </div>
+          </div>
+        </section>
     </main>
     </>
 );
