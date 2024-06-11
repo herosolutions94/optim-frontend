@@ -30,7 +30,7 @@ export default function Pricing() {
                         </ul>
                     </div>
                     <div className="btn_blk">
-                        <Link href="" className="site_btn color">Request Quote</Link>
+                        <Link href="/contact" className="site_btn color">Request Quote</Link>
                     </div>
                 </div>
             </div>
@@ -50,7 +50,7 @@ export default function Pricing() {
                         </ul>
                     </div>
                     <div className="btn_blk">
-                        <Link href="" className="site_btn color">Request Quote</Link>
+                        <Link href="/contact" className="site_btn color">Request Quote</Link>
                     </div>
                 </div>
             </div>
@@ -71,7 +71,7 @@ export default function Pricing() {
                         </ul>
                     </div>
                     <div className="btn_blk">
-                        <Link href="" className="site_btn color">Request Quote</Link>
+                        <Link href="/contact" className="site_btn color">Request Quote</Link>
                     </div>
                 </div>
             </div>
@@ -103,7 +103,7 @@ export default function Pricing() {
                             <li>Proven to increase gross profit volume by at least 5%</li>
                         </ul>
                         <div className="btn_blk">
-                            <Link href="" className="site_btn color">Get started</Link>
+                            <Link href="/signup" className="site_btn color">Get started</Link>
                         </div>
                     </div>
                 </div>
@@ -134,7 +134,7 @@ export default function Pricing() {
                 </div>
             </div>
             <div className="btn_blk text-center">
-                <Link href="" className="site_btn color">Get started</Link>
+                <Link href="/signup" className="site_btn color">Get started</Link>
             </div>
         </div>
       </section>

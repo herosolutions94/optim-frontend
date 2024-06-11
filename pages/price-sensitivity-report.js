@@ -70,7 +70,7 @@ export default function PriceSensitivityReport() {
                     </div>
                     <p>The price sensitivity report will empower you with insight you need to know exactly what pricing decisions to make and it will provide a pricing reference that will not get outdated.</p>
                     <div className="btn_blk">
-                        <Link href="" className="site_btn">Get Started Today</Link>
+                        <Link href="/signup" className="site_btn">Get Started Today</Link>
                     </div>
                 </div>
             </div>

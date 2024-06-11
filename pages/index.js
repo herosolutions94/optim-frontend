@@ -66,7 +66,7 @@ export default function Home() {
             <p>Maximize performance based on your goals with AI automation and detailed price sensitivity reports</p>
             <div className="btn_blk text-center">
               <Link href="/contact" className="site_btn color2">Contact Us</Link>
-              <Link href="/" className="site_btn color">Get Started</Link>
+              <Link href="/signup" className="site_btn color">Get Started</Link>
             </div>
           </div>
           <div className="image">

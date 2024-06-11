@@ -96,7 +96,7 @@ export default function RealTimeAIPricing() {
                         <li>Enhance decision-making with actionable data insights.</li>
                     </ul>
                     <div className="btn_blk">
-                        <Link href="" className="site_btn">Get Started Today</Link>
+                        <Link href="/signup" className="site_btn">Get Started Today</Link>
                     </div>
                 </div>
             </div>
@@ -183,7 +183,7 @@ export default function RealTimeAIPricing() {
                         <li>Minimal setup and maintenance</li>
                     </ul>
                     <div className="btn_blk">
-                        <Link href="" className="site_btn">Get Started Today</Link>
+                        <Link href="/signup" className="site_btn">Get Started Today</Link>
                     </div>
                 </div>
                 <div className="colR">

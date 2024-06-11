@@ -9,8 +9,8 @@ export default function BigCta() {
                     <p>Sign up today and start leveraging our AI-driven solutions to boost your gas station's performance.</p>
                 </div>
                 <div className="btn_blk text-center">
-                    <Link href="" className="site_btn">Sign Up Now</Link>
-                    <Link href="" className="site_btn color">View Pricing</Link>
+                    <Link href="/signup" className="site_btn">Sign Up Now</Link>
+                    <Link href="/pricing" className="site_btn color">View Pricing</Link>
                 </div>
                 </div>
             </div>

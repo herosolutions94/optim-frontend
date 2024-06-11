@@ -109,7 +109,7 @@ export default function About() {
                     </div>
                     <p>We aim to set the standard for excellence and innovation, helping gas station owners and operators around the world achieve their business goals and stay competitive in an ever-changing market.</p>
                     <div className="btn_blk">
-                        <Link href="" className="site_btn">Contact Us</Link>
+                        <Link href="/contact" className="site_btn">Contact Us</Link>
                     </div>
                 </div>
             </div>
