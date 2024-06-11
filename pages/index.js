@@ -65,7 +65,7 @@ export default function Home() {
             <h1>Optimize Your Gas Station Pricing with Artificial Intelligence</h1>
             <p>Maximize performance based on your goals with AI automation and detailed price sensitivity reports</p>
             <div className="btn_blk text-center">
-              <Link href="/contact" className="site_btn">Contact Us</Link>
+              <Link href="/contact" className="site_btn color2">Contact Us</Link>
               <Link href="/" className="site_btn color">Get Started</Link>
             </div>
           </div>

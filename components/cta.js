@@ -3,7 +3,7 @@ export default function Cta() {
     return (
       <div className='cta_flex'>
         <div className='sec_heading'>
-            <h2>Ready to Optimize Your Fuel Retail Operation?</h2>
+            <h2>Ready to Optimize Your Pricing?</h2>
             <p>Sign up today and start leveraging our AI-driven solutions to boost your gas station's profitability.</p>
         </div>
         <div className='btn_blk text-right'>

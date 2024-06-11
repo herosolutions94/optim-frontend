@@ -34,8 +34,11 @@ export default function ForgotPassword() {
                             type="submit"
                             >Submit</button>
                         </div>
+                        
                     </form>
-
+                    <div className="ask_question text-center show_cell_cell">
+                            <p>Don’t have an account? <Link href="signup">Get started today</Link></p>
+                        </div>
                 </div>
             </div>
         </section>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Link from "next/link";
-
+import Image from "next/image";
 export default function Signup() {
   return (
     <>
@@ -16,7 +16,7 @@ export default function Signup() {
             </div>
         </div>
         <section className="logon_sec">
-            <div className="inner_left">
+            <div className="inner_left signup_inner_left">
               <div className="inner">
                 <h4>Join Us Today</h4>
                 <p>Automate pricing and reporting effortlessly. Optimize your gas station's performance in real-time. Log in to start.</p>
@@ -58,13 +58,15 @@ export default function Signup() {
                       type="submit"
                     >Submit</button>
                   </div>
-                  
+                  <div className="ask_question text-center show_cell_cell">
+                  <p>Already have an account?  <Link href="/login">Login</Link></p>
+                  </div>
                 </form>
               </div>
             </div>
             <div className="inner_right">
               <div className="image">
-                <img src="/images/signup.png" alt="" />
+                <Image src="/images/signup.png" alt="" width={700} height={1300} />
               </div>
             </div>
         </section>

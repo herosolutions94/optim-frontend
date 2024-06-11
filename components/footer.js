@@ -12,7 +12,7 @@ export default function Footer() {
       {
         id: 2,
         text: "About Us",
-        link: "/",
+        link: "/about",
       },
       {
         id: 3,
@@ -22,19 +22,19 @@ export default function Footer() {
       {
         id: 9,
         text: "Contact Us",
-        link: "/",
+        link: "/contact",
       }
     ],
     list_03: [
       {
         id: 5,
         text: "Real-Time AI Pricing",
-        link: "/",
+        link: "/real-time-ai-pricing",
       },
       {
         id: 6,
         text: "Price Sensitivity Report",
-        link: "/",
+        link: "/price-sensitivity-report",
       }
     ],
     
@@ -116,7 +116,7 @@ export default function Footer() {
            
             <div className="copyright">
               <p className="text-center">
-              © Copyright 2022, All Rights Reserved
+              © 2023 By Optim All Rights Reserved
               </p>
             </div>
           </div>

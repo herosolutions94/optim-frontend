@@ -9,6 +9,8 @@ export default function Testimonials({ data }) {
     slidesToShow: 2,
     slidesToScroll: 1,
     arrows:false,
+    autoplay: true,
+    autoplaySpeed: 2000,
     responsive: [
       {
         breakpoint: 1300,

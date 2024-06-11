@@ -73,6 +73,15 @@
             @include object(contain);
         }
     }
+    .btn_blk{
+        .site_btn{
+            min-width: 18rem;
+            &.color2{
+                background-color: #4472C9;
+                border-color: #4472C9;
+            }
+        }
+    }
 }
 
 
@@ -89,6 +98,9 @@
             flex: unset;
             width: calc(100% / 3);
             padding: 1rem;
+            @include ipad_sm{
+                width: 100%;
+            }
             .inner{
                 @include radius(15px);
                 padding: 3rem;
@@ -127,6 +139,9 @@
 }
 
 .sponserd_sec{
+    @include mobile_sm{
+        padding-bottom: 6rem;
+    }
     .sec_heading{
         margin-bottom: 5rem;
     }
@@ -134,10 +149,19 @@
         margin: -1rem;
         gap: 2rem;
         justify-content: center;
+        @include ipad_sm{
+            column-gap: 4rem;
+        }
         .image{
             width: 14rem;
             height: 6rem;
             overflow: hidden;
+            @include ipad_sm{
+                width: fit-content;
+            }
+            @include mobile_sm{
+                height: 5rem;
+            }
             img{
                 @include object(contain);
             }
@@ -148,21 +172,35 @@
 .why_choose_sec{
     padding: 0;
     .flex{
+        @include ipad_sm{
+            flex-direction: column-reverse;
+        }
         .colL{
             width: 55%;
             padding-right: 2rem;
+            @include ipad_sm{
+                width: 100%;
+                padding-right: 0;
+                margin-top: 3rem;
+            }
             .inner{
                 background-color: #CEDDE6;
                 @include radius(30px);
                 padding: 5rem;
+                @include mobile_sm{
+                    padding: 2rem;
+                }
                 .lst{
                     .inner_lst{
                         @include flex;
                         gap: 2rem;
                         max-width: 45rem;
+                        @include mobile_sm{
+                            flex-direction: column;
+                        }
                         .img_icon{
-                            width: 8rem;
-                            height: 8rem;
+                            width: 10rem;
+                            height: 10rem;
                             background-color: #4472C9;
                             @include radius(50px);
                             overflow: hidden;
@@ -178,10 +216,16 @@
                             background: #fff;
                             padding: 1.5rem;
                             border-radius: 7px;
-                            padding-left: 6rem;
-                            margin-left: -6rem;
-                            height: 13.3rem;
+                            padding-left: 7rem;
+                            margin-left: -7rem;
                             @include flex($flow:column,$justify:center);
+                            @include mobile_sm{
+                                padding-left: 1.5rem;
+                                margin-left: 0;
+                                padding-top: 7rem;
+                                margin-top: -7rem;
+                                text-align: center;
+                            }
                             h4{
                                 margin-bottom: .5rem;
                             }
@@ -214,6 +258,10 @@
             width: 45%;
             padding-left: 3rem;
             align-self: center;
+            @include ipad_sm{
+                width: 100%;
+                padding-left: 0;
+            }
             .sec_heading{
                 margin-bottom: 2rem;
             }
@@ -233,17 +281,31 @@
     }
     .flex{
         margin: -1rem;
+        @include ipad_sm{
+            flex-direction: column;
+        }
         .col{
             padding: 1rem;
+            &:first-child{
+                @include ipad_sm{
+                    margin-bottom: 6rem;
+                }
+                @include mobile_sm{
+                    margin-bottom: 0;
+                }
+            }
             .inner{
                 @include radius(20px);
                 padding: 5rem;
                 background-color: #91B3F3;
+                @include mobile_sm{
+                    padding: 3rem;
+                }
                 a{
                     @include flex;
                     gap: .5rem;
                     color: $color;
-                    font-family: 'SemiBold';
+                    font-family: "MediumMedium";
                     img{
                         height: 2rem;
                         align-self: center;
@@ -294,6 +356,12 @@
         background-color: #CEDDE6;
         @include radius(30px);
         padding:9rem 7rem;
+        @include mobile_sm{
+            padding: 4rem;
+        }
+        @include mobile_xs{
+            padding: 2rem;
+        }
         .sec_heading{
             max-width: 70rem;
             margin: 0 auto 3rem;
@@ -325,6 +393,10 @@
         padding: 44px;
         @include mobile_md {
           margin: 0;
+          margin-bottom: 2rem;
+        }
+        @include mobile_sm{
+            padding: 2rem;
         }
         .testi_icon {
           width: 30px;
@@ -362,8 +434,16 @@
     }
     .flex{
         margin: -1.5rem;
+        
         .col{
             padding: 1.5rem;
+            @include ipad_sm{
+                flex: unset;
+                width: 50%;
+            }
+            @include mobile_md{
+                width: 100%;
+            }
             .inner{
                 border: 1px solid #EFF0F6;
                 padding: 2rem;
@@ -376,11 +456,16 @@
                     margin-left: auto;
                     background-color: #C3D5F8;
                     color: $color;
-                    padding: .2rem 2rem;
+                    padding:0.2rem 2rem 0;
                     @include radius(.5rem);
+                    font-family: 'Bold';
                 }
                 .price_bdy{
                     height: 37rem;
+                    overflow: auto;
+                    @include mobile_md{
+                        height: unset;
+                    }
                     p{
                         strong{
                             opacity: 0.7;
@@ -405,6 +490,9 @@
                     }
                 }
                 .btn_blk{
+                    @include mobile_md{
+                        margin-top: 2rem;
+                    }
                     .site_btn{
                         width: 100%;
                         color: $light;
@@ -423,14 +511,28 @@
 // =============report_sec======
 .report_sec{
     padding-top: 0;
+    @include ipad_sm{
+        padding-bottom: 0;
+    }
     .flex{
         background-color: #CEDDE6;
-        padding: 7rem 7rem 0;
+        padding: 5rem 7rem 0;
         @include radius(35px);
+        @include ipad{
+            padding: 3rem;
+        }
         .colL{
             width: 50%;
-            padding-bottom: 7rem;
+            padding-bottom: 6rem;
             align-self: center;
+            @include ipad_sm{
+                width: 100%;
+                padding-bottom: 2rem;
+                padding-top: 3rem;
+            }
+            @include mobile_sm{
+                padding-top: 0;
+            }
             ul{
                 @include list;
                 margin-top: 1.5rem;
@@ -452,12 +554,25 @@
         .colR{
             width: 50%;
             padding-left: 7rem;
+            @include ipad_sm{
+                width: 100%;
+                padding-left: 0;
+            }
             .inner{
                 background-color: $primary-color;
                 color: $light;
                 margin-bottom: -9rem;
                 padding: 6rem;
                 @include radius(25px);
+                @include ipad{
+                    padding: 4rem;
+                }
+                @include ipad_sm{
+                    margin-bottom: 0;
+                }
+                @include mobile_sm{
+                    padding: 2rem;
+                }
                 h1{
                     color: $light;
                     text-align: center;
@@ -507,11 +622,22 @@
             max-width: 60rem;
             margin: 2rem auto 3rem;
         }
+        @include mobile_md{
+            margin-bottom: 3rem;
+        }
     }
     .flex{
+        @include mobile_sm{
+            flex-direction: column-reverse;
+        }
         .colL{
             width: 50%;
             padding-right: 2rem;
+            @include mobile_md{
+                width: 100%;
+                padding-right: 0;
+                margin-top: 2rem;
+            }
             .image{
                 @include img(80%);
                 box-shadow: none;
@@ -527,6 +653,10 @@
             width: 50%;
             padding-left: 6rem;
             align-self: center;
+            @include mobile_md{
+                width: 100%;
+                padding-left: 0;
+            }
             ul{
                 @include list;
                 margin-top: 1.5rem;
@@ -562,6 +692,18 @@
         @include radius(35px);
         height: 58rem;
         padding: 7rem;
+        @include ipad{
+            margin: 0 1.5rem;
+        }
+        @include ipad_sm{
+            height: unset;
+        }
+        @include mobile{
+            padding: 4rem;
+        }
+        @include mobile_sm{
+            padding: 3rem;
+        }
         .cntnt{
             max-width: 70rem;
             padding: 5rem;
@@ -587,6 +729,9 @@
     }
     .flex{
         margin: -1rem;
+        @include ipad_sm{
+            flex-direction: column;
+        }
         .col{
             padding: 1rem;
             .inner{
@@ -601,6 +746,11 @@
                 .inner{
                     text-align: right;
                     border-right: 2px solid #4472C9;
+                    @include ipad_sm{
+                        text-align: left;
+                        border-right: none;
+                        border-left: 2px solid #4472C9;
+                    }
                 }
             }
             &:last-child{
@@ -617,17 +767,32 @@
     .sec_heading{
         max-width: 60%;
         margin-bottom: 3rem;
+        @include ipad_sm{
+            max-width: 100%;
+        }
     }
     .flex{
+        @include ipad_sm{
+            flex-direction: column-reverse;
+        }
         .colL{
             width: 55%;
             padding-right: 2rem;
             align-self: center;
+            @include ipad_sm{
+                width: 100%;
+                padding-right: 0;
+                margin-top: 2rem;
+            }
         }
         .colR{
             width: 45%;
             padding-left: 1rem;
             align-self: center;
+            @include ipad_sm{
+                width: 100%;
+                padding-left: 0;
+            }
             .image{
                 @include img(100%);
                 box-shadow: none;
@@ -644,18 +809,40 @@
 
 .values_sec{
     padding-top: 0;
+    @include mobile{
+        padding-bottom: 8rem;
+    }
+    @include mobile_sm{
+        padding-bottom: 0;
+    }
     .flex{
+        @include ipad_sm{
+            flex-direction: column-reverse;
+        }
         .colL{
             width: 55%;
             padding-right: 2rem;
             @include flex($flow:wrap);
             margin: -1rem;
+            @include ipad_sm{
+                width: 100%;
+                padding-right: 0;
+            }
+            @include mobile_sm{
+                margin: 0;
+            }
             .inner{
                 width: 50%;
                 padding: 1rem;
+                @include mobile_sm{
+                    width: 100%;
+                    padding: 0;
+                    margin-bottom: 1.5rem;
+                }
                 .inner_col{
                     @include radius(20px);
                     padding: 2rem;
+                    height: 100%;
                     h4{
                         color: $light;
                     }
@@ -680,6 +867,9 @@
                 }
                 &:last-child{
                     transform: translateY(60px);
+                    @include mobile_sm{
+                        transform: translateY(0px);
+                    }
                     .inner_col{
                         background-color: #8BE7C8;
                         h4 , p{
@@ -689,6 +879,9 @@
                 }
                 &:nth-child(2){
                     transform: translateY(60px);
+                    @include mobile_sm{
+                        transform: translateY(0px);
+                    }
                     .inner_col{
                         background-color: #4472C9;
                     }
@@ -705,6 +898,12 @@
             padding-left: 5rem;
             align-self: center;
             padding-top: 8rem;
+            @include ipad_sm{
+                width: 100%;
+                padding-left: 0;
+                margin-bottom: 2rem;
+                padding-top: 0;
+            }
             .btn_blk{
                 margin-top: 3rem;
             }
@@ -725,14 +924,24 @@
         @include flex($justify:space-between);
         padding:2rem 4rem 2rem max(30vw - 42rem, 20px);
         @include ipad{
+            width: 100%;
             background-color: $light;
+        }
+        @include mobile{
+            margin-bottom: 3rem;
         }
         .logo{
             max-width: 14rem;
             height: 8rem;
+            @include mobile{
+                height: 5rem;
+            }
         }
         .ask_question{
             align-self: center;
+            @include mobile{
+                display: none;
+            }
             p{
                 margin-bottom: 0;
                 a{
@@ -779,6 +988,9 @@
             .inner{
                 width: 40rem;
                 margin: 9rem auto 0;
+                @include mobile_sm{
+                    margin-top: 0;
+                }
                 form{
                     margin-top: 2rem;
                     .outer_form_blk{
@@ -818,16 +1030,22 @@
                 }
             }
             &.signup_inner_left{
-                top: 9rem;
-                padding-top: 0;
                 .inner{
-                    margin-top: 2rem;
-                }
-                @include laptop{
-                    align-items: flex-start;
                     @include ipad{
-                        align-items: center;
+                        margin-top: 15rem;
                     }
+                    @include ipad_sm{
+                        margin-top: 9rem;
+                    }
+                    @include mobile_sm{
+                        margin-top: 9rem;
+                        form{
+                            padding-bottom: 2rem;
+                        }
+                    }
+                }
+                @include mobile_sm{
+                    align-items: unset;
                 }
             }
         }
@@ -849,13 +1067,45 @@
             }
         }
     }
+
+    .ask_question{
+        &.show_cell_cell{
+            display: none;
+            margin-top: 1rem;
+            @include mobile{
+                display: block;
+            }
+            p{
+                margin-bottom: 0;
+                a{
+                    color: $primary-color;
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
 }
 
 .full_logon{
     height: 90vh;
     @include flex(center,center);
+    @include mobile{
+        height: 100%;
+        padding-top: 15rem;
+    }
+    @include mobile_sm{
+        height: 100vh;
+    }
+    .contain{
+        @include mobile_sm{
+            width: 100%;
+        }
+    }
     .cntnt{
         width: 40rem;
+        @include mobile_sm{
+            width: 100%;
+        }
         h4 , p{
             text-align: center;
         }
@@ -892,14 +1142,27 @@
         margin-bottom: 3rem;
     }
     .flex{
+        @include mobile{
+            flex-direction: column-reverse;
+        }
         .colL{
             width: 60%;
             padding-right: 3rem;
+            @include mobile{
+                width: 100%;
+                padding-right: 0;
+                margin-top: 2rem;
+            }
             form{
                 background-color: #91B3F3;
                 @include radius(20px);
                 border: 1px solid #CEDDE6;
                 padding: 3rem;
+                .col-6{
+                    @include mobile_sm{
+                        width: 100%;
+                    }
+                }
                 .btn_blk{
                     margin-top: 4rem;
                     .site_btn{
@@ -909,8 +1172,11 @@
             }
         }
         .colR{
-            width: 30%;
+            width: 40%;
             align-self: center;
+            @include mobile{
+                width: 100%;
+            }
             h4{
                 margin-bottom: 2rem;
             }
@@ -946,10 +1212,20 @@
         background-color: #91B3F3;
         padding:9rem 6rem;
         @include radius(25px);
+        @include ipad_sm{
+            padding: 4rem;
+        }
+        @include mobile_sm{
+            padding: 3rem;
+        }
         .colL{
             width: 45%;
             padding-right: 2rem;
             align-self: center;
+            @include ipad_sm{
+                width: 100%;
+                padding-right: 0;
+            }
             p{
                 margin-bottom: 0;
             }
@@ -957,6 +1233,11 @@
         .colR{
             width: 55%;
             padding-left: 2rem;
+            @include ipad_sm{
+                width: 100%;
+                padding-left: 0;
+                margin-top: 2rem;
+            }
             .image{
                 @include img(60%);
                 background-color: transparent;
@@ -985,9 +1266,13 @@
             width: 50%;
             flex: unset;
             padding: 1rem;
+            @include mobile_md{
+                width: 100%;
+            }
             .inner{
                 padding: 3rem;
                 @include radius(20px);
+                height: 100%;
                 .heading_feature{
                     @include flex;
                     gap: 1.5rem;
@@ -1071,11 +1356,22 @@
         border: 1px solid #D1EAF5;
         background-color: #F1FAFF;
         padding: 6rem;
+        @include ipad_sm{
+            flex-direction: column-reverse;
+        }
+        @include mobile_sm{
+            padding: 3rem;
+        }
         .colL{
             width: 50%;
             padding-right: 2rem;
+            align-self: center;
+            @include ipad_sm{
+                width: 100%;
+                padding-right: 0
+            }
             .image{
-                @include img(70%);
+                @include img(85%);
                 box-shadow: none;
                 background-color: transparent;
                 @include radius(0);
@@ -1089,6 +1385,11 @@
             width: 50%;
             padding-left: 2rem;
             align-self: center;
+            @include ipad_sm{
+                width: 100%;
+                padding-left: 0;
+                margin-bottom: 4rem;
+            }
             ul{
                 @include list;
                 margin-top: 1.5rem;
@@ -1108,6 +1409,308 @@
             }
             .btn_blk{
                 margin-top: 2rem;
+            }
+        }
+    }
+}
+
+.how_it_works_product_sec{
+    .cntnt{
+        max-width: 110rem;
+        margin-bottom: 3rem;
+    }
+    .flex{
+        margin: -1rem;
+        .col{
+            flex: unset;
+            width: calc(100% / 4);
+            padding: 1rem;
+            @include ipad{
+                width: 50%;
+            }
+            @include mobile_md{
+                width: 100%;
+            }
+            &.self_center{
+                align-self: center;
+            }
+            > p{
+                margin-bottom: 0;
+            }
+            .inner{
+                background-color: #F6FCFF;
+                border: 1px solid #D1E0FC;
+                padding:3rem 2rem;
+                height: 100%;
+                @include radius(20px);
+                .img_icon{
+                    width: 6rem;
+                    height: 6rem;
+                    overflow: hidden;
+                    margin-bottom: 2rem;
+                    img{
+                        @include object(contain);
+                    }
+                }
+                p{
+                    margin-bottom: 0;
+                }
+                h4{
+                    font-size: 1.7rem;
+                }
+            }
+        }
+    }
+
+}
+
+.use_case_pro{
+    padding: 0;
+    .cntnt{
+        max-width: 60rem;
+        margin: 0 auto 3rem;
+    }
+    .flex{
+        background-color: #8BE7C8;
+        padding: 7rem;
+        @include radius(30px);
+        @include ipad_sm{
+            padding: 3rem;
+        }
+        .col{
+            flex: unset;
+            width: calc(100% / 3);
+            padding: 1rem;
+            @include mobile{
+                width: 50%;
+            }
+            @include mobile_sm{
+                width: 100%;
+            }
+            h4{
+                font-size: 1.7rem;
+                position: relative;
+                margin-bottom: 3.5rem;
+                &:before{
+                    @include pos($t:null,$b:-2rem);
+                    content: '';
+                    width: 6rem;
+                    height: .4rem;
+                    background-color: #4472C9;
+                }
+            }
+            p{
+                margin-bottom: 0;
+            }
+        }
+    }
+}
+
+.pro_grid{
+    padding-bottom: 0;
+    &.p_t_4{
+        padding-top: 5rem;
+    }
+    .flex{
+        .colL{
+            width: 42%;
+            padding-right: 1rem;
+            align-self: center;
+            @include ipad_sm{
+                width: 100%;
+                padding-right: 0;
+            }
+            ul{
+                @include list;
+                margin-top: 1.5rem;
+                li{
+                    position: relative;
+                    padding-left: 3rem;
+                    margin-bottom: 1rem;
+                    &:before{
+                        @include pos($r:null,$t:.1rem);
+                        content: '';
+                        background: url(/images/CheckCircle.svg);
+                        @include bg(contain);
+                        width: 2rem;
+                        height: 2rem;
+                    }
+                }
+            }
+            .btn_blk{
+                margin-top: 2rem;
+            }
+        }
+        .colR{
+            width: 58%;
+            padding-left: 1rem;
+            @include ipad_sm{
+                width: 100%;
+                padding-left: 0;
+                margin-top: 2rem;
+            }
+            .image{
+                @include img(70%);
+                box-shadow: none;
+                background-color: transparent;
+                @include radius(0);
+                img{
+                    @include pos;
+                    @include object(contain);
+                }
+            }
+        }
+    }
+}
+
+
+.values_sec_pro{
+    padding-top: 4rem;
+    padding-bottom: 5rem;
+    @include mobile_sm{
+        padding-bottom: 0;
+    }
+    .flex{
+        @include ipad_sm{
+            flex-direction: column-reverse;
+        }
+        .colL{
+            width: 60%;
+            padding-right: 1rem;
+            @include flex($flow:wrap);
+            margin: -1rem;
+            @include ipad_sm{
+                width: 100%;
+                padding-right: 0;
+            }
+            @include mobile_sm{
+                margin: 0;
+            }
+            .inner{
+                width: 50%;
+                padding: 1rem;
+                @include mobile_sm{
+                    width: 100%;
+                    padding: 0;
+                    margin-bottom: 1.5rem;
+                }
+                .inner_col{
+                    @include radius(20px);
+                    padding: 2rem;
+                    height: 100%;
+                    h4{
+                        color: $light;
+                    }
+                    p{
+                        color: $light;
+                        margin-bottom: 0;
+                    }
+                    .img_icon{
+                        width: 7rem;
+                        height: 7rem;
+                        padding: .8rem;
+                        overflow: hidden;
+                        margin-bottom: 2rem;
+                        @include radius(.5rem);
+                        img{
+                            @include object(contain);
+                        }
+                    }
+                }
+                &:first-child{
+                    .inner_col{
+                        background-color: #09369C;
+                    }
+                    .img_icon{
+                        background: #1242B1;
+                    }
+                    h4,p{
+                        color: $light;
+                    }
+                }
+                &:last-child{
+                    transform: translateY(60px);
+                    @include mobile_sm{
+                        transform: translateY(0px);
+                    }
+                    .inner_col{
+                        background-color: #4472C9;
+                        .img_icon{
+                            background: #5289F1;
+                        }
+                    }
+                }
+                &:nth-child(2){
+                    transform: translateY(60px);
+                    @include mobile_sm{
+                        transform: translateY(0px);
+                    }
+                    .inner_col{
+                        background-color: #8BE7C8;
+                    }
+                    .img_icon{
+                        background: #9EF3D6;
+                    }
+                    h4 , p{
+                        color: #000;
+                    }
+                }
+                &:nth-child(3){
+                    .inner_col{
+                        background-color: #CEDDE6;
+                    }
+                    .img_icon{
+                        background: #DFEFFA;
+                    }
+                    h4 , p{
+                        color: #000;
+                    }
+                }
+            }
+        }
+        .colR{
+            width: 40%;
+            padding-left: 3rem;
+            align-self: center;
+            padding-top: 8rem;
+            @include ipad_sm{
+                width: 100%;
+                padding-left: 0;
+                padding-top: 0;
+                padding-bottom: 3rem;
+            }
+           
+            .btn_blk{
+                margin-top: 3rem;
+            }
+        }
+    }
+}
+
+
+
+
+
+.benefits_pro_two{
+    padding-bottom: 0;
+    .cntnt{
+        max-width: 65rem;
+        margin: 0 auto 3rem;
+    }
+    .flex{
+        .col{
+            flex: unset;
+            width: calc(100% / 3);
+            padding: 1rem;
+            @include mobile{
+                width: 100%;
+            }
+            h4{
+                font-size: 1.7rem;
+                position: relative;
+            }
+            p{
+                margin-bottom: 0;
             }
         }
     }

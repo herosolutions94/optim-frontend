@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Link from "next/link";
-
+import Image from "next/image";
 export default function Login() {
   const[passView,setPassView] = useState(true);
   const togglePass = () =>{
@@ -51,13 +51,15 @@ export default function Login() {
                       <span>Continue with Google</span>
                     </Link>
                   </div>
-                  
+                  <div className="ask_question text-center show_cell_cell">
+                    <p>Don’t have an account? <Link href="signup">Get started today</Link></p>
+                </div>
                 </form>
               </div>
             </div>
             <div className="inner_right">
               <div className="image">
-                <img src="/images/login.png" alt="" />
+              <Image src="/images/login.png" alt="" width={700} height={1300} />
               </div>
             </div>
         </section>
