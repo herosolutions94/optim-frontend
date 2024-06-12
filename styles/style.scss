@@ -923,6 +923,7 @@
         z-index: 1;
         @include flex($justify:space-between);
         padding:2rem 4rem 2rem max(30vw - 42rem, 20px);
+        background-color: $light;
         @include ipad{
             width: 100%;
             background-color: $light;
@@ -932,7 +933,7 @@
         }
         .logo{
             max-width: 14rem;
-            height: 8rem;
+            height: 6rem;
             @include mobile{
                 height: 5rem;
             }
@@ -971,6 +972,20 @@
             padding: 2rem 5rem 4rem;
             overflow-y: auto;
             @include flex(center,center);
+            &::-webkit-scrollbar-track {
+                background: #f6f9fc;
+                border-radius: 5rem;
+                }
+                &::-webkit-scrollbar {
+                width: 0rem;
+                height: 0rem;
+                background-color: #f6f9fc;
+                border-radius: 5rem;
+                }
+                &::-webkit-scrollbar-thumb {
+                background: rgba($black, 0.15);
+                border-radius: 5rem;
+                }
             h4{
                 color: $primary-color;
             }
@@ -1030,7 +1045,13 @@
                 }
             }
             &.signup_inner_left{
+                padding-top: 5rem;
+                align-items: unset;
+                
                 .inner{
+                    form{
+                        padding-bottom: 3rem;
+                    }
                     @include ipad{
                         margin-top: 15rem;
                     }
@@ -1146,8 +1167,8 @@
             flex-direction: column-reverse;
         }
         .colL{
-            width: 60%;
-            padding-right: 3rem;
+            width:70%;
+            padding-right: 5rem;
             @include mobile{
                 width: 100%;
                 padding-right: 0;
@@ -1172,7 +1193,7 @@
             }
         }
         .colR{
-            width: 40%;
+            width: 30%;
             align-self: center;
             @include mobile{
                 width: 100%;

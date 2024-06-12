@@ -40,6 +40,11 @@ export default function Contact() {
                             </div>
                             <div className="col-12">
                                 <div className="txt_blk">
+                                    <input type="text" className="input" name="cname" placeholder="Company Name" />
+                                </div>
+                            </div>
+                            <div className="col-12">
+                                <div className="txt_blk">
                                     <input type="text" className="input" name="subject" placeholder="Subject" />
                                 </div>
                             </div>
