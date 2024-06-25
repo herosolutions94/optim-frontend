@@ -1,0 +1,17 @@
+export const CardStyle = {
+    display: "block",
+    width: "100%",
+    height: "5rem",
+    background: "#fff",
+    color: "rgba(11, 26, 45, 0.8)",
+    fontSize: "1.4rem",
+    fontWeight: "500",
+    textAlign: "left",
+    lineHeight: "inherit",
+    padding: "1.6rem 1.6rem",
+    border: "0.1rem solid #d8d8d8",
+    borderRadius: "0.8rem",
+    outline: "none !important",
+    boxShadow: "none",
+    transition: "all ease 0.3s",
+  };
