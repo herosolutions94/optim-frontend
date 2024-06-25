@@ -7,6 +7,7 @@ import 'aos/dist/aos.css';
 import '../styles/custom.scss'
 import Layout from '../components/layout'
 
+
 export default function App({ Component, pageProps }) {
   useEffect(() => {
     AOS.init({
