@@ -34,60 +34,11 @@ export default function Home({ result }) {
 
   const { page_title, site_settings, content, brands, testimonials } = result;
 
-  const data = [
-    {
-      id: 1,
-      image: "/images/quote.svg",
-      comment:
-        "People now recognise that having a good performance conversation means that something happens as a result. With Landingfolio, the design team can now build design which identifies employees’ career aspirations and goals and from which we approach managers and check to see what is happening.",
-      name: "Vicki and Stacy Oliver",
-      designation: "Founders of V&S Enterprises",
-    },
-    {
-      id: 2,
-      image: "/images/quote.svg",
-      comment:
-        "People now recognise that having a good performance conversation means that something happens as a result. With Landingfolio, the design team can now build design which identifies employees’ career aspirations and goals and from which we approach managers and check to see what is happening.",
-      name: "Albert Flores",
-      designation: "Product Manager at Jomanar",
-    },
-    {
-      id: 3,
-      image: "/images/quote.svg",
-      comment:
-        "People now recognise that having a good performance conversation means that something happens as a result. With Landingfolio, the design team can now build design which identifies employees’ career aspirations and goals and from which we approach managers and check to see what is happening.",
-      name: "Vicki and Stacy Oliver",
-      designation: "Founders of V&S Enterprises",
-    },
-    {
-      id: 4,
-      image: "/images/quote.svg",
-      comment:
-        "People now recognise that having a good performance conversation means that something happens as a result. With Landingfolio, the design team can now build design which identifies employees’ career aspirations and goals and from which we approach managers and check to see what is happening.",
-      name: "Albert Flores",
-      designation: "Product Manager at Jomanar",
-    },
-    {
-      id: 5,
-      image: "/images/quote.svg",
-      comment:
-        "People now recognise that having a good performance conversation means that something happens as a result. With Landingfolio, the design team can now build design which identifies employees’ career aspirations and goals and from which we approach managers and check to see what is happening.",
-      name: "Vicki and Stacy Oliver",
-      designation: "Founders of V&S Enterprises",
-    },
-    {
-      id: 6,
-      image: "/images/quote.svg",
-      comment:
-        "People now recognise that having a good performance conversation means that something happens as a result. With Landingfolio, the design team can now build design which identifies employees’ career aspirations and goals and from which we approach managers and check to see what is happening.",
-      name: "Albert Flores",
-      designation: "Product Manager at Jomanar",
-    },
-  ];
   return (
     <>
       <MetaGenerator
         page_title={page_title + " - " + site_settings?.site_name}
+        meta_info={content}
       />
       <main>
         <section className="banner">
@@ -208,54 +159,18 @@ export default function Home({ result }) {
               </h2>
             </div>
             <div className="flex">
-              <div className="image">
-                <Image
-                  src="/images/logo1.svg"
-                  alt=""
-                  width={500}
-                  height={500}
-                />
-              </div>
-              <div className="image">
-                <Image
-                  src="/images/logo2.svg"
-                  alt=""
-                  width={500}
-                  height={500}
-                />
-              </div>
-              <div className="image">
-                <Image
-                  src="/images/logo3.svg"
-                  alt=""
-                  width={500}
-                  height={500}
-                />
-              </div>
-              <div className="image">
-                <Image
-                  src="/images/logo4.svg"
-                  alt=""
-                  width={500}
-                  height={500}
-                />
-              </div>
-              <div className="image">
-                <Image
-                  src="/images/logo5.svg"
-                  alt=""
-                  width={500}
-                  height={500}
-                />
-              </div>
-              <div className="image">
-                <Image
-                  src="/images/logo6.svg"
-                  alt=""
-                  width={500}
-                  height={500}
-                />
-              </div>
+              {brands?.map((val) => {
+                return (
+                  <div className="image" key={val.id}>
+                    <Image
+                      src={cmsFileUrl(val?.image, "brands")}
+                      alt="brands"
+                      width={500}
+                      height={500}
+                    />
+                  </div>
+                );
+              })}
             </div>
           </div>
         </section>
@@ -414,7 +329,14 @@ export default function Home({ result }) {
             </div>
           </div>
         </section>
-        <BigCta />
+        <BigCta
+          heading={content?.sec5_heading}
+          paragraph={content?.section5_text}
+          btn1_text={content?.sec5_link1_text}
+          btn1_url={content?.sec5_link1_url}
+          btn2_text={content?.sec5_link2_text}
+          btn2_url={content?.sec5_link2_url}
+        />
         <section className="testimonials">
           <div className="contain">
             <div className="sec_heading">
@@ -424,7 +346,7 @@ export default function Home({ result }) {
               <Text string={content?.section6_text} />
             </div>
             <div className="slick-carousel">
-              <Testimonials data={data} />
+              <Testimonials data={testimonials} />
             </div>
           </div>
         </section>
