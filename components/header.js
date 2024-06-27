@@ -5,8 +5,7 @@ import { cmsFileUrl } from "../helpers/helpers";
 import { authToken } from "../helpers/authToken";
 import http from "../helpers/http";
 import { doObjToFormData } from "../helpers/helpers";
-export default function Header({siteSettings}) {
-
+export default function Header({ siteSettings }) {
   const [toggle, setToggle] = useState(false);
   const ToggleAction = () => {
     setToggle(!toggle);
@@ -40,13 +39,13 @@ export default function Header({siteSettings}) {
         setIsLoading(false);
         console.error(error);
       }
-      
     };
 
     fetchSiteSettings();
   }, []);
 
   const token = authToken();
+
 
   return (
     <header>
@@ -103,21 +102,33 @@ export default function Header({siteSettings}) {
                 </li>
               </ul>
             </li>
-            <li className="show_cell_lnk">
-              <Link href="/login" onClick={ToggleAction}>
-                Login
-              </Link>
-            </li>
-            <li className="show_cell_lnk">
-              <Link href="/signup" className="site_btn" onClick={ToggleAction}>
-                Signup
-              </Link>
-            </li>
+            {!token && (
+              <>
+              <li className="show_cell_lnk">
+                <Link href="/login" onClick={ToggleAction}>
+                  Login
+                </Link>
+              </li>
+            
+              <li className="show_cell_lnk">
+                <Link
+                  href="/signup"
+                  className="site_btn"
+                  onClick={ToggleAction}
+                >
+                  Signup
+                </Link>
+              </li>
+              </>
+              
+            )}
           </ul>
         </nav>
         <div className="login_btns">
           <ul>
-            <li>
+            {!token && (
+              <>
+              <li>
               <Link href="/login" onClick={ToggleAction}>
                 Login
               </Link>
@@ -127,6 +138,8 @@ export default function Header({siteSettings}) {
                 Signup
               </Link>
             </li>
+              </>
+            )}
           </ul>
         </div>
         <div className="clearfix"></div>

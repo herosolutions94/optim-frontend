@@ -6,9 +6,13 @@ import { cmsFileUrl, doObjToFormData } from "../helpers/helpers";
 import { parse } from "cookie";
 import MetaGenerator from "../components/meta-generator";
 import Text from "../components/text";
+import { useForm } from "react-hook-form";
+import { useRouter } from "next/router";
+import toast from "react-hot-toast";
 
 export const getServerSideProps = async (context) => {
-  const { req } = context;
+  const { req, query } = context;
+  const plan_id = query?.plan;
   const cookieHeader = req.headers.cookie || "";
   const cookieValue = parse(cookieHeader);
   const authToken =
@@ -18,7 +22,10 @@ export const getServerSideProps = async (context) => {
       ? cookieValue["authToken"]
       : null;
   const result = await http
-    .post("contact-page", doObjToFormData({ token: authToken }))
+    .post(
+      "contact-page",
+      doObjToFormData({ token: authToken, plan_id: plan_id })
+    )
     .then((response) => response.data)
     .catch((error) => error.response.data.message);
 
@@ -26,7 +33,45 @@ export const getServerSideProps = async (context) => {
 };
 
 export default function Contact({ result }) {
-  const { page_title, site_settings, content } = result;
+  const { page_title, site_settings, content, plan } = result;
+  const router = useRouter();
+  const plan_id = router.query?.plan ? router.query?.plan : 0;
+
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+    reset,
+    setValue,
+  } = useForm();
+  useEffect(() => {
+    if (plan_id > 0) {
+      setValue("plan_id", plan?.id);
+    }
+  }, [plan]);
+
+  const [loading, setLoading] = useState(false);
+
+  async function handleContactSubmit(formData, e) {
+    // console.log(formData);
+    // e.preventDefault();
+    setLoading(true);
+    const result = await http
+      .post("save-contact-message", doObjToFormData(formData))
+      .then((response) => {
+        if (response.data.msg) {
+          toast.success(<Text string={response.data.msg} />);
+          setLoading(false);
+          setTimeout(() => {
+            reset();
+          }, 2000);
+        } else {
+          toast.error(<Text string={response.data.validation_error} />);
+          setLoading(false);
+        }
+      })
+      .catch((error) => error.response.data.message);
+  }
 
   return (
     <>
@@ -48,16 +93,38 @@ export default function Contact({ result }) {
             </div>
             <div className="flex">
               <div className="colL">
-                <form>
+                <form
+                  onSubmit={handleSubmit(handleContactSubmit)}
+                  method="POST"
+                >
                   <div className="row form_row">
                     <div className="col-6">
                       <div className="txt_blk">
+                        {plan_id > 0 && (
+                          <input
+                            type="hidden"
+                            name="plan_id"
+                            defaultValue={plan?.id}
+                            {...register("plan_id", {
+                              required: "Plan not exist.Plan is required!",
+                            })}
+                          />
+                        )}
                         <input
                           type="text"
                           name="fname"
                           className="input"
                           placeholder="First Name"
+                          {...register("fname", {
+                            required: "First Name is required!",
+                          })}
                         />
+                        <div
+                          className="validation-error"
+                          style={{ color: "red" }}
+                        >
+                          {errors.fname?.message}
+                        </div>
                       </div>
                     </div>
                     <div className="col-6">
@@ -67,7 +134,16 @@ export default function Contact({ result }) {
                           name="lname"
                           className="input"
                           placeholder="Last Name"
+                          {...register("lname", {
+                            required: "Last Name is required!",
+                          })}
                         />
+                        <div
+                          className="validation-error"
+                          style={{ color: "red" }}
+                        >
+                          {errors.lname?.message}
+                        </div>
                       </div>
                     </div>
                     <div className="col-6">
@@ -77,7 +153,21 @@ export default function Contact({ result }) {
                           name="email"
                           className="input"
                           placeholder="Email"
+                          {...register("email", {
+                            required: "Email is required!",
+                            pattern: {
+                              value:
+                                /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                              message: "Please enter a valid email",
+                            },
+                          })}
                         />
+                        <div
+                          className="validation-error"
+                          style={{ color: "red" }}
+                        >
+                          {errors.email?.message}
+                        </div>
                       </div>
                     </div>
                     <div className="col-6">
@@ -87,7 +177,16 @@ export default function Contact({ result }) {
                           className="input"
                           name="phone"
                           placeholder="Phone Number"
+                          {...register("phone", {
+                            required: "Phone Number is required!",
+                          })}
                         />
+                        <div
+                          className="validation-error"
+                          style={{ color: "red" }}
+                        >
+                          {errors.phone?.message}
+                        </div>
                       </div>
                     </div>
                     <div className="col-12">
@@ -95,9 +194,18 @@ export default function Contact({ result }) {
                         <input
                           type="text"
                           className="input"
-                          name="cname"
+                          name="company"
                           placeholder="Company Name"
+                          {...register("company", {
+                            required: "Company Name is required!",
+                          })}
                         />
+                        <div
+                          className="validation-error"
+                          style={{ color: "red" }}
+                        >
+                          {errors.company?.message}
+                        </div>
                       </div>
                     </div>
                     <div className="col-12">
@@ -107,21 +215,63 @@ export default function Contact({ result }) {
                           className="input"
                           name="subject"
                           placeholder="Subject"
+                          {...register("subject", {
+                            required: "Subject is required!",
+                          })}
                         />
+                        <div
+                          className="validation-error"
+                          style={{ color: "red" }}
+                        >
+                          {errors.subject?.message}
+                        </div>
                       </div>
                     </div>
                     <div className="col-12">
                       <div className="txt_blk">
                         <textarea
-                          name="message"
+                          name="comments"
                           className="input"
                           placeholder="Write your message"
+                          {...register("comments", {
+                            required: "Message is required.",
+                          })}
                         ></textarea>
+                        <div
+                          className="validation-error"
+                          style={{ color: "red" }}
+                        >
+                          {errors.comments?.message}
+                        </div>
                       </div>
+                    </div>
+                    {plan_id > 0 && (
+                      <div className="col-6">
+                        <div className="txt_blk">
+                          <input
+                            type="hidden"
+                            name="plan_id"
+                            defaultValue={plan?.id}
+                            {...register("plan_id", {
+                              required: "Plan does not exist! OR Plan is required!",
+                            })}
+                          />
+                        </div>
+                      </div>
+                    )}
+                    <div className="validation-error" style={{ color: "red" }}>
+                      {errors.plan_id?.message}
                     </div>
                   </div>
                   <div className="btn_blk text-center">
-                    <button className="site_btn">Submit</button>
+                    <button className="site_btn">
+                      Submit
+                      {loading && (
+                        <i
+                          className={loading ? "spinner" : "spinnerHidden"}
+                        ></i>
+                      )}
+                    </button>
                   </div>
                 </form>
               </div>

@@ -6,6 +6,9 @@ import { cmsFileUrl, doObjToFormData } from "../helpers/helpers";
 import { parse } from "cookie";
 import MetaGenerator from "../components/meta-generator";
 import Text from "../components/text";
+import { useForm } from "react-hook-form";
+import { useDispatch, useSelector } from "react-redux";
+import { createAccount } from "../states/actions/signup";
 
 export const getServerSideProps = async (context) => {
   const { req } = context;
@@ -20,7 +23,7 @@ export const getServerSideProps = async (context) => {
   if (authToken !== null) {
     return {
       redirect: {
-        destination: "/dashboard", // Replace '/dashboard' with the appropriate URL
+        destination: "/", // Replace '/dashboard' with the appropriate URL
         permanent: false,
       },
     };
@@ -35,6 +38,28 @@ export const getServerSideProps = async (context) => {
 
 export default function Signup({ result }) {
   const { page_title, site_settings, content } = result;
+
+  const dispatch = useDispatch();
+  const isFormProcessing = useSelector(
+    (state) => state.signup.isFormProcessing
+  );
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const handleCreateAccount = (data, e) => {
+    e.preventDefault();
+    data = { ...data, mem_type: "member" };
+    dispatch(createAccount(data));
+  };
+
+  const [passView, setPassView] = useState(true);
+  const togglePass = () => {
+    setPassView(!passView);
+  };
 
   return (
     <>
@@ -62,7 +87,7 @@ export default function Signup({ result }) {
           <div className="inner_left signup_inner_left">
             <div className="inner">
               <Text string={content?.banner_text} />
-              <form method="POST">
+              <form method="POST" onSubmit={handleSubmit(handleCreateAccount)}>
                 <div className="outer_form_blk">
                   <div className="form_blk">
                     <h6>First Name</h6>
@@ -70,7 +95,17 @@ export default function Signup({ result }) {
                       type="text"
                       className="input"
                       placeholder="First name"
+                      {...register("fname", {
+                        pattern: {
+                          value: /^[a-zA-Z][a-zA-Z ]*$/,
+                          message: "Invalid Value",
+                        },
+                        required: "First Name is Required",
+                      })}
                     />
+                    <div className="validation-error" style={{ color: "red" }}>
+                      {errors.fname?.message}
+                    </div>
                   </div>
                 </div>
                 <div className="outer_form_blk">
@@ -80,7 +115,17 @@ export default function Signup({ result }) {
                       type="text"
                       className="input"
                       placeholder="Last name"
+                      {...register("lname", {
+                        pattern: {
+                          value: /^[a-zA-Z][a-zA-Z ]*$/,
+                          message: "Invalid Value",
+                        },
+                        required: "Last Name is Required",
+                      })}
                     />
+                    <div className="validation-error" style={{ color: "red" }}>
+                      {errors.lname?.message}
+                    </div>
                   </div>
                 </div>
 
@@ -91,7 +136,17 @@ export default function Signup({ result }) {
                       type="text"
                       className="input"
                       placeholder="hi@example.com"
+                      {...register("email", {
+                        required: "Email is Required",
+                        pattern: {
+                          value: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,})+$/,
+                          message: "Email format is not valid!",
+                        },
+                      })}
                     />
+                    <div className="validation-error" style={{ color: "red" }}>
+                      {errors.email?.message}
+                    </div>
                   </div>
                 </div>
                 <div className="outer_form_blk">
@@ -101,22 +156,58 @@ export default function Signup({ result }) {
                       type="text"
                       className="input"
                       placeholder="Enter Phone"
+                      {...register("phone", {
+                        required: "Phone No. is Required",
+                      })}
                     />
+                    <div className="validation-error" style={{ color: "red" }}>
+                      {errors.phone?.message}
+                    </div>
                   </div>
                 </div>
                 <div className="outer_form_blk">
-                  <div className="form_blk">
-                    <h6>Address</h6>
+                  <h6>Password</h6>
+                  <div className="form_blk pass_blk">
                     <input
-                      type="text"
+                      type={passView ? "text" : "password"}
                       className="input"
-                      placeholder="Enter Address"
+                      placeholder="Enter password"
+                      {...register("password", {
+                        required: "Password is Required",
+                        pattern: {
+                          value:
+                            /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[A-Za-z0-9\!\"\#\$\%\&\'\(\)\*\+\,\-\.\/\:\;\<\>\=\?\@\[\]\{\}\\\\\^\_\`\~]{8,}$/,
+                          message:
+                            "The password should contain at least 8 characters, that contain at least one lowercase letter, one uppercase letter and one numeric digit.",
+                        },
+                      })}
                     />
+                    <i
+                      className={passView ? "icon-eye" : "icon-eye-slash"}
+                      onClick={togglePass}
+                    ></i>
+                    
                   </div>
+                  <div className="validation-error" style={{ color: "red" }}>
+                      {errors.password?.message}
+                    </div>
                 </div>
+
                 <div className="btn_blk">
-                  <button className="site_btn block" type="submit">
+                  <button
+                    className="site_btn block"
+                    type="submit"
+                    disabled={isFormProcessing ? true : false}
+                  >
                     Submit
+                    {isFormProcessing && (
+                      <div
+                        className="spinner-border text-success"
+                        role="status"
+                      >
+                        <span className="visually-hidden">Loading...</span>
+                      </div>
+                    )}
                   </button>
                 </div>
                 <div className="ask_question text-center show_cell_cell">

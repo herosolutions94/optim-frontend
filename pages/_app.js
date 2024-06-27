@@ -11,6 +11,8 @@ import http from "../helpers/http";
 import { doObjToFormData } from "../helpers/helpers";
 import { Toaster } from "react-hot-toast";
 import NextNProgress from "nextjs-progressbar";
+import { Provider } from "react-redux";
+import store from "../states/store";
 
 export default function App({ Component, pageProps, siteSettings }) {
   useEffect(() => {
@@ -25,10 +27,12 @@ export default function App({ Component, pageProps, siteSettings }) {
       return (
         <>
           <NextNProgress color="#4472C9" />
-          <Layout siteSettings={siteSettings}>
-            <Toaster position="top-right" />
-            {page}
-          </Layout>
+          <Provider store={store}>
+            <Layout siteSettings={siteSettings}>
+              <Toaster position="top-right" />
+              {page}
+            </Layout>
+          </Provider>
         </>
       );
     };

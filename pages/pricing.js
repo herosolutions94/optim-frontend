@@ -48,7 +48,7 @@ export default function Pricing({ result }) {
             <div className="flex">
               {plans?.map((val) => {
                 return (
-                  <div className="col" key={val.id}>
+                  <div className="col" key={val?.id}>
                     <div className="inner">
                       <div className="top_lbl">
                         <Text string={val?.plan_type} />
@@ -62,7 +62,10 @@ export default function Pricing({ result }) {
                         <Text string={val?.txt2} />
                       </div>
                       <div className="btn_blk">
-                        <Link href="/contact" className="site_btn color">
+                        <Link
+                          href={`/contact?plan=${val?.id}`}
+                          className="site_btn color"
+                        >
                           Request Quote
                         </Link>
                       </div>
@@ -127,7 +130,6 @@ export default function Pricing({ result }) {
               </div>
               <div className="colR">
                 <Text string={content?.section2_txt2} />
-               
               </div>
             </div>
             <div className="btn_blk text-center">

@@ -9,7 +9,6 @@ import { parse } from "cookie";
 import MetaGenerator from "../components/meta-generator";
 import Text from "../components/text";
 import { cmsFileUrl } from "../helpers/helpers";
-import { useForm } from "react-hook-form";
 
 import { NULL } from "sass";
 
@@ -35,36 +34,6 @@ export default function Home({ result }) {
   // console.log(result);
 
   const { page_title, site_settings, content, brands, testimonials } = result;
-  const {
-    register,
-    formState: { errors },
-    handleSubmit,
-    reset,
-  } = useForm();
-  const [loading, setLoading] = useState(false);
-
-  async function handleContactSubmit(formData, e) {
-    // e.preventDefault();
-    setLoading(true);
-    const result = await http
-      .post("save-contact-message", doObjToFormData(formData))
-      .then((response) => {
-        if (response.data.msg) {
-          toast.success(<Text string={response.data.msg} />);
-          setLoading(false);
-          setTimeout(() => {
-            reset();
-          }, 2000);
-        } else {
-          toast.error(<Text string={response.data.validationErrors} />);
-          setLoading(false);
-        }
-
-        console.log(response.data);
-      })
-
-      .catch((error) => error.response.data.message);
-  }
 
   return (
     <>
