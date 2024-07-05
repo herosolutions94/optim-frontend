@@ -13,8 +13,8 @@ export const getServerSideProps = async (context) => {
   const cookieValue = parse(cookieHeader);
   const authToken =
     cookieValue["authToken"] !== undefined &&
-    cookieValue["authToken"] !== null &&
-    cookieValue["authToken"] !== ""
+      cookieValue["authToken"] !== null &&
+      cookieValue["authToken"] !== ""
       ? cookieValue["authToken"]
       : null;
   if (authToken !== null) {
@@ -99,10 +99,10 @@ export default function Login({ result }) {
                   <button className="site_btn block" type="submit">
                     Login
                   </button>
-                  <Link href="" className="site_btn block blank">
+                  {/* <Link href="" className="site_btn block blank">
                     <img src="/images/google.svg" alt="Continue with Google" />
                     <span>Continue with Google</span>
-                  </Link>
+                  </Link> */}
                 </div>
                 <div className="ask_question text-center show_cell_cell">
                   <p>
