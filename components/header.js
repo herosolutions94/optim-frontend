@@ -90,6 +90,8 @@ export default function Header({ siteSettings }) {
                     Price Sensitivity Report
                   </Link>
                 </li>
+                         </ul>
+            </li>
             <li>
               <Link href="/pricing" onClick={ToggleAction}>
                 Pricing
@@ -107,8 +109,7 @@ export default function Header({ siteSettings }) {
               </Link>
             </li>
       
-              </ul>
-            </li>
+           
             {!token && (
               <>
               <li className="show_cell_lnk">
