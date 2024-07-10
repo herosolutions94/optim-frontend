@@ -66,17 +66,7 @@ export default function Header({ siteSettings }) {
         </div>
         <nav id="nav" className={toggle ? "active" : ""}>
           <ul>
-            <li>
-              <Link href="/pricing" onClick={ToggleAction}>
-                Pricing
-              </Link>
-            </li>
-            <li>
-              <Link href="/about" onClick={ToggleAction}>
-                About Us
-              </Link>
-            </li>
-            <li
+                  <li
               className={`drop ${resourceDrop ? "open" : ""}`}
               onMouseEnter={ToggleResourceDrop}
               onMouseLeave={closeResourceDrop}
@@ -100,6 +90,23 @@ export default function Header({ siteSettings }) {
                     Price Sensitivity Report
                   </Link>
                 </li>
+            <li>
+              <Link href="/pricing" onClick={ToggleAction}>
+                Pricing
+              </Link>
+            </li>
+                        <li>
+              <Link href="/contact" onClick={ToggleAction}>
+                Contact Us
+              </Link>
+            </li>
+      
+            <li>
+              <Link href="/about" onClick={ToggleAction}>
+                About Us
+              </Link>
+            </li>
+      
               </ul>
             </li>
             {!token && (
