@@ -1,7 +1,48 @@
-import Link from "next/link"
-import React from 'react'
+import Link from "next/link";
+import React, { useState } from "react";
+import Text from "./text";
+import { useForm } from "react-hook-form";
+import { doObjToFormData } from "../helpers/helpers";
+import { toast } from "react-hot-toast";
+import http from "../helpers/http";
 
-export default function Footer() {
+export default function Footer({ siteSettings }) {
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+    reset,
+  } = useForm();
+
+  const [loading, setLoading] = useState(false);
+
+  async function handleNewsletterSubmit(formData, e) {
+    // e.preventDefault();
+
+    setLoading(true);
+
+    const result = await http
+      .post("save-newsletter", doObjToFormData(formData))
+      .then((response) => {
+        // console.log(response);
+        if (response.data.msg) {
+          toast.success(<Text string={response.data.msg} />);
+          setLoading(false);
+          setTimeout(() => {
+            reset();
+          }, 2000);
+        } else {
+          // console.log(response.data.validation_error);
+          toast.error(<Text string={response.data.validation_error} />);
+          setLoading(false);
+        }
+
+        // console.log(response.data);
+      })
+
+      .catch((error) => error.response.data.message);
+  }
+
   const data = {
     list_02: [
       {
@@ -23,7 +64,7 @@ export default function Footer() {
         id: 9,
         text: "Contact Us",
         link: "/contact",
-      }
+      },
     ],
     list_03: [
       {
@@ -35,91 +76,138 @@ export default function Footer() {
         id: 6,
         text: "Price Sensitivity Report",
         link: "/price-sensitivity-report",
-      }
+      },
     ],
-    
-  }
-    return (
-      <footer>
-          <div className="contain">
-            <div className="flex_row main_row row">
-              <div className="col-xl-4">
-                <div className="in_col">
-                  <h4>Company</h4>
-                  <p>Stay ahead of your competition with real-time pricing adjustments and insights.</p>
-                  <div className="social_logon">
-                    <Link href="/" target="_blank" rel="noreferrer">
-                      <img src="/images/facebook.svg" alt="" />
-                    </Link>
-                    <Link href="/" target="_blank" rel="noreferrer">
-                      <img src="/images/twitter.svg" alt="" />
-                    </Link>
-                    <Link href="/" target="_blank" rel="noreferrer">
-                      <img src="/images/instagram.svg" alt="" />
-                    </Link>
-                    <Link href="/" target="_blank" rel="noreferrer">
-                      <img src="/images/linkedin.svg" alt="" />
-                    </Link>
-                    <Link href="/" target="_blank" rel="noreferrer">
-                      <img src="/images/pintrest.svg" alt="" />
-                    </Link>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg mid_col">
-                <div className="in_col">
-                  <h4>
-                  Quick Links
-                  </h4>
-                  <ul className="list">
-                    {data.list_02.map((val) => {
-                      return (
-                        <li key={val.id}>
-                          <Link href={val.link}>{val.text}</Link>
-                        </li>
-                      );
-                    })}
-                  </ul>
-                </div>
-              </div>
-              <div className="col-lg mid_col">
-                <div className="in_col">
-                  <h4>
-                  Products
-                  </h4>
-                  <ul className="list">
-                    {data.list_03.map((val) => {
-                      return (
-                        <li key={val.id}>
-                          <Link href={val.link}>{val.text}</Link>
-                        </li>
-                      );
-                    })}
-                  </ul>
-                </div>
-              </div>
-              <div className="col-xl-4">
-                <div className="in_col">
-                  <h4>
-                  Join Our Mailing List
-                  </h4>
-                  <div className="subscribe">
-                    <p>Stay up to date with the latest news and deals!</p>
-                    <form>
-                      <input type="text" className="input" name="" placeholder={"@ email address"}/>
-                      <button type="submit" className="site_btn">SUBMIT</button>
-                    </form>
-                  </div>
-                </div>
-              </div>
-            </div>
-           
-            <div className="copyright">
-              <p className="text-center">
-              © 2023 By Optim All Rights Reserved
+  };
+  const date = new Date();
+  let year = date.getFullYear();
+
+  return (
+    <footer>
+      <div className="contain">
+        <div className="flex_row main_row row">
+          <div className="col-xl-4">
+            <div className="in_col">
+              <h4>
+                <Text string={siteSettings?.site_ft_heading1} />
+              </h4>
+              <p>
+                <Text string={siteSettings?.site_about} />
               </p>
+              <div className="social_logon">
+                <Link
+                  href={siteSettings?.site_facebook}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <img src="/images/facebook.svg" alt="facebook" />
+                </Link>
+                <Link
+                  href={siteSettings?.site_twitter}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <img src="/images/twitter.svg" alt="twitter" />
+                </Link>
+                <Link
+                  href={siteSettings?.site_instagram}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <img src="/images/instagram.svg" alt="instagram" />
+                </Link>
+                <Link
+                  href={siteSettings?.site_discord}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <img src="/images/linkedin.svg" alt="linkedin" />
+                </Link>
+                <Link
+                  href={siteSettings?.site_pinterest}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <img src="/images/pintrest.svg" alt="pintrest" />
+                </Link>
+              </div>
             </div>
           </div>
-        </footer>
-    )
-  }
+          <div className="col-lg mid_col">
+            <div className="in_col">
+              <h4>
+                <Text string={siteSettings?.site_ft_heading2} />
+              </h4>
+              <ul className="list">
+                {data.list_02.map((val) => {
+                  return (
+                    <li key={val.id}>
+                      <Link href={val.link}>{val.text}</Link>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          </div>
+          <div className="col-lg mid_col">
+            <div className="in_col">
+              <h4>
+                <Text string={siteSettings?.site_ft_heading3} />
+              </h4>
+              <ul className="list">
+                {data.list_03.map((val) => {
+                  return (
+                    <li key={val.id}>
+                      <Link href={val.link}>{val.text}</Link>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          </div>
+          <div className="col-xl-4">
+            <div className="in_col">
+              <h4>
+                <Text string={siteSettings?.site_ft_heading4} />
+              </h4>
+              <div className="subscribe">
+                <p>
+                  <Text string={siteSettings?.site_newsletter_txt} />
+                </p>
+                <form
+                  onSubmit={handleSubmit(handleNewsletterSubmit)}
+                  method="POST"
+                >
+                  <input
+                    type="email"
+                    className="input"
+                    // name="email"
+                    placeholder={"@ email address"}
+                    {...register("email", {
+                      required: "Email is required.",
+                      pattern: {
+                        value:
+                          /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                        message: "Please enter a valid email",
+                      },
+                    })}
+                  />
+                  <button type="submit" className="site_btn">
+                    SUBMIT
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="copyright">
+          <p className="text-center">
+            © Copyright {year}, {siteSettings?.site_name}{" "}
+            {siteSettings?.site_copyright}
+          </p>
+        </div>
+      </div>
+    </footer>
+  );
+}

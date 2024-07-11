@@ -2,7 +2,7 @@ import SiteMaster from "./sitemaster";
 import Header from "./header";
 import Footer from "./footer";
 import { useRouter } from "next/router";
-export default function Layout({ children }) {
+export default function Layout({ children,siteSettings }) {
   const router = useRouter();
   const path = router.pathname;
   if ((path == "/signup") || (path == "/login") || (path == "/forgot-password") || (path == "/reset-password")) {
@@ -16,7 +16,7 @@ export default function Layout({ children }) {
     return (
       <div className="content">
         <SiteMaster />
-        <Header />
+        <Header siteSettings={siteSettings} />
         {children}
       </div>
     );
@@ -25,9 +25,9 @@ export default function Layout({ children }) {
     return (
       <div className="content">
         <SiteMaster />
-        <Header />
+        <Header siteSettings={siteSettings} />
         {children}
-        <Footer/>
+        <Footer siteSettings={siteSettings}/>
       </div>
     );
   }
