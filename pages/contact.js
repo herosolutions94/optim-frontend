@@ -51,6 +51,7 @@ export default function Contact({ result }) {
   }, [plan]);
 
   const [loading, setLoading] = useState(false);
+  const [formSubmitted, setFormSubmitted] = useState(false);
 
   async function handleContactSubmit(formData, e) {
     // console.log(formData);
@@ -62,6 +63,8 @@ export default function Contact({ result }) {
         if (response.data.msg) {
           toast.success(<Text string={response.data.msg} />);
           setLoading(false);
+          setFormSubmitted(true);
+
           setTimeout(() => {
             reset();
           }, 2000);
@@ -93,188 +96,200 @@ export default function Contact({ result }) {
             </div>
             <div className="flex">
               <div className="colL">
-                <form
-                  onSubmit={handleSubmit(handleContactSubmit)}
-                  method="POST"
-                >
-                  <div className="row form_row">
-                    <div className="col-6">
-                      <div className="txt_blk">
-                        {plan_id > 0 && (
+                {!formSubmitted ? (
+                  <form
+                    onSubmit={handleSubmit(handleContactSubmit)}
+                    method="POST"
+                  >
+                    <div className="row form_row">
+                      <div className="col-6">
+                        <div className="txt_blk">
+                          {plan_id > 0 && (
+                            <input
+                              type="hidden"
+                              name="plan_id"
+                              defaultValue={plan?.id}
+                              {...register("plan_id", {
+                                required: "Plan not exist.Plan is required!",
+                              })}
+                            />
+                          )}
                           <input
-                            type="hidden"
-                            name="plan_id"
-                            defaultValue={plan?.id}
-                            {...register("plan_id", {
-                              required: "Plan not exist.Plan is required!",
+                            type="text"
+                            name="fname"
+                            className="input"
+                            placeholder="First Name"
+                            {...register("fname", {
+                              required: "First Name is required!",
                             })}
                           />
-                        )}
-                        <input
-                          type="text"
-                          name="fname"
-                          className="input"
-                          placeholder="First Name"
-                          {...register("fname", {
-                            required: "First Name is required!",
-                          })}
-                        />
-                        <div
-                          className="validation-error"
-                          style={{ color: "red" }}
-                        >
-                          {errors.fname?.message}
+                          <div
+                            className="validation-error"
+                            style={{ color: "red" }}
+                          >
+                            {errors.fname?.message}
+                          </div>
                         </div>
                       </div>
-                    </div>
-                    <div className="col-6">
-                      <div className="txt_blk">
-                        <input
-                          type="text"
-                          name="lname"
-                          className="input"
-                          placeholder="Last Name"
-                          {...register("lname", {
-                            required: "Last Name is required!",
-                          })}
-                        />
-                        <div
-                          className="validation-error"
-                          style={{ color: "red" }}
-                        >
-                          {errors.lname?.message}
-                        </div>
-                      </div>
-                    </div>
-                    <div className="col-6">
-                      <div className="txt_blk">
-                        <input
-                          type="text"
-                          name="email"
-                          className="input"
-                          placeholder="Email"
-                          {...register("email", {
-                            required: "Email is required!",
-                            pattern: {
-                              value:
-                                /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                              message: "Please enter a valid email",
-                            },
-                          })}
-                        />
-                        <div
-                          className="validation-error"
-                          style={{ color: "red" }}
-                        >
-                          {errors.email?.message}
-                        </div>
-                      </div>
-                    </div>
-                    <div className="col-6">
-                      <div className="txt_blk">
-                        <input
-                          type="text"
-                          className="input"
-                          name="phone"
-                          placeholder="Phone Number"
-                          {...register("phone", {
-                            required: "Phone Number is required!",
-                          })}
-                        />
-                        <div
-                          className="validation-error"
-                          style={{ color: "red" }}
-                        >
-                          {errors.phone?.message}
-                        </div>
-                      </div>
-                    </div>
-                    <div className="col-12">
-                      <div className="txt_blk">
-                        <input
-                          type="text"
-                          className="input"
-                          name="company"
-                          placeholder="Company Name"
-                          {...register("company", {
-                            required: "Company Name is required!",
-                          })}
-                        />
-                        <div
-                          className="validation-error"
-                          style={{ color: "red" }}
-                        >
-                          {errors.company?.message}
-                        </div>
-                      </div>
-                    </div>
-                    <div className="col-12">
-                      <div className="txt_blk">
-                        <input
-                          type="text"
-                          className="input"
-                          name="subject"
-                          placeholder="Subject"
-                          {...register("subject", {
-                            required: "Subject is required!",
-                          })}
-                        />
-                        <div
-                          className="validation-error"
-                          style={{ color: "red" }}
-                        >
-                          {errors.subject?.message}
-                        </div>
-                      </div>
-                    </div>
-                    <div className="col-12">
-                      <div className="txt_blk">
-                        <textarea
-                          name="comments"
-                          className="input"
-                          placeholder="Write your message"
-                          {...register("comments", {
-                            required: "Message is required.",
-                          })}
-                        ></textarea>
-                        <div
-                          className="validation-error"
-                          style={{ color: "red" }}
-                        >
-                          {errors.comments?.message}
-                        </div>
-                      </div>
-                    </div>
-                    {plan_id > 0 && (
                       <div className="col-6">
                         <div className="txt_blk">
                           <input
-                            type="hidden"
-                            name="plan_id"
-                            defaultValue={plan?.id}
-                            {...register("plan_id", {
-                              required: "Plan does not exist! OR Plan is required!",
+                            type="text"
+                            name="lname"
+                            className="input"
+                            placeholder="Last Name"
+                            {...register("lname", {
+                              required: "Last Name is required!",
                             })}
                           />
+                          <div
+                            className="validation-error"
+                            style={{ color: "red" }}
+                          >
+                            {errors.lname?.message}
+                          </div>
                         </div>
                       </div>
-                    )}
-                    <div className="validation-error" style={{ color: "red" }}>
-                      {errors.plan_id?.message}
-                    </div>
-                  </div>
-                  <div className="btn_blk text-center">
-                    <button className="site_btn">
-                      Submit
-                      {loading && (
-                        <i
-                          className={loading ? "spinner" : "spinnerHidden"}
-                        ></i>
+                      <div className="col-6">
+                        <div className="txt_blk">
+                          <input
+                            type="text"
+                            name="email"
+                            className="input"
+                            placeholder="Email"
+                            {...register("email", {
+                              required: "Email is required!",
+                              pattern: {
+                                value:
+                                  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                                message: "Please enter a valid email",
+                              },
+                            })}
+                          />
+                          <div
+                            className="validation-error"
+                            style={{ color: "red" }}
+                          >
+                            {errors.email?.message}
+                          </div>
+                        </div>
+                      </div>
+                      <div className="col-6">
+                        <div className="txt_blk">
+                          <input
+                            type="text"
+                            className="input"
+                            name="phone"
+                            placeholder="Phone Number"
+                            {...register("phone", {
+                              required: "Phone Number is required!",
+                            })}
+                          />
+                          <div
+                            className="validation-error"
+                            style={{ color: "red" }}
+                          >
+                            {errors.phone?.message}
+                          </div>
+                        </div>
+                      </div>
+                      <div className="col-12">
+                        <div className="txt_blk">
+                          <input
+                            type="text"
+                            className="input"
+                            name="company"
+                            placeholder="Company Name"
+                            {...register("company", {
+                              required: "Company Name is required!",
+                            })}
+                          />
+                          <div
+                            className="validation-error"
+                            style={{ color: "red" }}
+                          >
+                            {errors.company?.message}
+                          </div>
+                        </div>
+                      </div>
+                      <div className="col-12">
+                        <div className="txt_blk">
+                          <input
+                            type="text"
+                            className="input"
+                            name="subject"
+                            placeholder="Subject"
+                            {...register("subject", {
+                              required: "Subject is required!",
+                            })}
+                          />
+                          <div
+                            className="validation-error"
+                            style={{ color: "red" }}
+                          >
+                            {errors.subject?.message}
+                          </div>
+                        </div>
+                      </div>
+                      <div className="col-12">
+                        <div className="txt_blk">
+                          <textarea
+                            name="comments"
+                            className="input"
+                            placeholder="Write your message"
+                            {...register("comments", {
+                              required: "Message is required.",
+                            })}
+                          ></textarea>
+                          <div
+                            className="validation-error"
+                            style={{ color: "red" }}
+                          >
+                            {errors.comments?.message}
+                          </div>
+                        </div>
+                      </div>
+                      {plan_id > 0 && (
+                        <div className="col-6">
+                          <div className="txt_blk">
+                            <input
+                              type="hidden"
+                              name="plan_id"
+                              defaultValue={plan?.id}
+                              {...register("plan_id", {
+                                required:
+                                  "Plan does not exist! OR Plan is required!",
+                              })}
+                            />
+                          </div>
+                        </div>
                       )}
-                    </button>
+                      <div
+                        className="validation-error"
+                        style={{ color: "red" }}
+                      >
+                        {errors.plan_id?.message}
+                      </div>
+                    </div>
+                    <div className="btn_blk text-center">
+                      <button className="site_btn">
+                        Submit
+                        {loading && (
+                          <i
+                            className={loading ? "spinner" : "spinnerHidden"}
+                          ></i>
+                        )}
+                      </button>
+                    </div>
+                  </form>
+                ) : (
+                  <div className="success-message">
+                    <h3>Thank you!</h3>
+                    <p>Your Query Submitted Successfully.</p>
                   </div>
-                </form>
+                )}
               </div>
+
               <div className="colR">
                 <h4>
                   <Text string={content?.section2_text} />

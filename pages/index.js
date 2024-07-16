@@ -162,7 +162,7 @@ export default function Home({ result }) {
             <div className="flex">
               {brands?.map((val) => {
                 return (
-                  <div className="image" key={val.id}>
+                  <div className="image" key={val?.id}>
                     <Image
                       src={cmsFileUrl(val?.image, "brands")}
                       alt="brands"
