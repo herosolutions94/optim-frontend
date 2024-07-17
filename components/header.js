@@ -66,17 +66,9 @@ export default function Header({ siteSettings }) {
         </div>
         <nav id="nav" className={toggle ? "active" : ""}>
           <ul>
-            <li>
-              <Link href="/pricing" onClick={ToggleAction}>
-                Pricing
-              </Link>
-            </li>
-            <li>
-              <Link href="/about" onClick={ToggleAction}>
-                About Us
-              </Link>
-            </li>
-            <li
+
+
+              <li
               className={`drop ${resourceDrop ? "open" : ""}`}
               onMouseEnter={ToggleResourceDrop}
               onMouseLeave={closeResourceDrop}
@@ -102,6 +94,24 @@ export default function Header({ siteSettings }) {
                 </li>
               </ul>
             </li>
+
+                      
+            <li>
+              <Link href="/pricing" onClick={ToggleAction}>
+                Pricing
+              </Link>
+            </li>
+                       <li>
+              <Link href="/contact" onClick={ToggleAction}>
+                Contact Us
+              </Link>
+            </li>
+            <li>
+              <Link href="/about" onClick={ToggleAction}>
+                About Us
+              </Link>
+            </li>
+          
             {!token && (
               <>
               <li className="show_cell_lnk">
