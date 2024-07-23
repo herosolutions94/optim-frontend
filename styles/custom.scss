@@ -2878,6 +2878,7 @@ nav {
   -ms-flex: 1;
   flex: 1;
   @include trans;
+  @include pos($t:null, $b:null);
   @include ipad_sm{
     @include pos($pos: fixed, $t: 8rem, $b:null);
     @include flex($flow: wrap);
@@ -2917,8 +2918,8 @@ nav {
     }
     > li {
       position: relative;
-      padding: .9rem 4rem;
-      padding-left: 0;
+      padding: .9rem 2rem;
+      // padding-left: 0;
       &.show_cell_lnk{
         display: none;
         @include ipad_sm{
