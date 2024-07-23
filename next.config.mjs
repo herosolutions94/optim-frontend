@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['127.0.0.1', '127.0.0.1:8000','optim.bot']
+    domains: ['127.0.0.1', '127.0.0.1:8000','api.optim.bot']
  
   },
   reactStrictMode: true,
