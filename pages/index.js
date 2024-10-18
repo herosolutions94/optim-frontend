@@ -11,6 +11,7 @@ import Text from "../components/text";
 import { cmsFileUrl } from "../helpers/helpers";
 
 import { NULL } from "sass";
+import TestimonialsNew from "@/components/testimonials-new";
 
 export const getServerSideProps = async (context) => {
   const { req } = context;
@@ -347,7 +348,7 @@ export default function Home({ result }) {
               <Text string={content?.section6_text} />
             </div>
             <div className="slick-carousel">
-              <Testimonials data={testimonials} />
+              <TestimonialsNew data={testimonials} />
             </div>
           </div>
         </section>
